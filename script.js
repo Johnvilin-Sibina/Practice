@@ -35,3 +35,4 @@ request.onload = function(){
     let pop = res.reduce((acc,cv)=>acc+cv.population,0);
     console.log(pop);
 }
+
