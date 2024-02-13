@@ -14,7 +14,7 @@ for(var i=0;i<res.length;i++){
     }
 }
 }*/
-//05/02/2024
+/*05/02/2024
 let request = new XMLHttpRequest();
 request.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
 request.send();
@@ -34,5 +34,27 @@ request.onload = function(){
     //Print the sum of total population of all the countries.
     let pop = res.reduce((acc,cv)=>acc+cv.population,0);
     console.log(pop);
+}*/
+/*13/02/24:
+Find the missing number in the array [1,2,3,5]
+Solution:*/
+let arr = [1,2,3,5];
+for(let i=0;i<arr.length-1;i++){
+  let dif = arr[i+1]-arr[i];
+if(dif==1){
+  continue;
+  }
+  else{
+console.log(arr[i]+1);
 }
+}
+let arr1 = [1,2,3,5]
+for(let i=0;i<arr1.length;i++){
+    if(arr[i]+1!=arr1[i+1]){
+        console.log(arr1[i]+1);
+        break;
+    }
+
+    }
+
 
