@@ -1,6 +1,23 @@
-.main{
+/* .main{
     background-color: green;
 }
 .main1{
     background-color: yellow;
+}*/
+/* Modifying the content in Bootstrap: 
+#main{
+    font-size: 28px;
+}
+.btn{
+    background-color: greenyellow;
+}*/
+How responsiveness works in bootstrap?
+.main1{
+    background-color: bisque;
+}
+.main2{
+    background-color: blueviolet;
+}
+.main3{
+    background-color: darkolivegreen;
 }
