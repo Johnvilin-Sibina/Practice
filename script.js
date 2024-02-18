@@ -37,7 +37,7 @@ request.onload = function(){
 }*/
 /*13/02/24:
 Find the missing number in the array [1,2,3,5]
-Solution:*/
+Solution:
 let arr = [1,2,3,5];
 for(let i=0;i<arr.length-1;i++){
   let dif = arr[i+1]-arr[i];
@@ -55,6 +55,18 @@ for(let i=0;i<arr1.length;i++){
         break;
     }
 
-    }
+    }*/
+// Logical Operator:
+var a = 1;
+var b = 0;
+var c = 2;
+console.log(a || b);
+console.log(b || a);
+console.log(a && b);
+console.log(a && c);
+console.log(c && a);
 
-
+var a=3;
+var b=-2;
+console.log(a>0&&b>0);
+console.log(a>0||b>0);
