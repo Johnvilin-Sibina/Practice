@@ -1,26 +1,119 @@
-/* var res = fetch("https://restcountries.com/v3.1/all")
-.then((data)=>data.json()).then((data1)=>console.log(data1));*/
-// console.log(res);
+// Async
 
-// var res = fetch("https://restcountries.com/v3.1/all").then((data)=>console.log(data.json()));
+/* async function foo(){
+    return "Hello World"
+}
+foo()*/
 
-/* var res1 = fetch("https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json")
-.then((data)=>data.json()).then((data1)=>console.log(data1)); */
+// Await
 
-/* var res2 = fetch("https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json")
-.then((data)=>data.json()).then((data1)=>console.log(data1)); */
+/* function bar(){
+    return new Promise((resolve,reject)=>resolve("Hello World"))
+}
+async function foo(){
+    var res = await bar()
+    console.log(res)
+}
+foo() */
 
-var res = fetch("https://restcountries.com/v3.1/all")
-.then((data)=>data.json()).then((data1)=>bar(data1));
+// async - await
 
-function bar(data1){
-    for(var i=0;i<data1.length;i++){
-        var res = data1[i].latlng
-        foo(...res)
+/* async function foo(){
+    var res = await fetch("https://restcountries.com/v3.1/all")
+    var res1 = await res.json();
+    console.log(res1)
+}
+foo() */
+// Fetching data from covid api using async and await
+
+/* async function foo(){
+    var promise_data = await fetch("https://data.covid19india.org/v4/min/data.min.json");
+    var res = await promise_data.json();
+    console.log(res)
+}
+foo()*/
+
+// Fetching data from restcountries and passing it to open weather map
+
+/* async function foo(){
+    var promise_data = await fetch("https://restcountries.com/v3.1/all");
+    var res = await promise_data.json()
+    for(let i=0;i<res.length;i++){
+        var result = res[i].latlng
+        bar(...result)
+        // bar(result[0],result[1])
+    }
+    
+    
+}
+async function bar(lat,lon){
+    var promise_data = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5eb779a14d85a8b363191098dc26c5ef`)
+    var res = await promise_data.json()
+    var result = res.main.temp
+    console.log(result)
+}
+foo() */
+
+// try-catch: error handling
+
+/* function getlist(){
+    return new Promise((resolve,reject)=>reject("This is rejected"))
+}
+async function foo(){
+    try{
+        var res = await getlist();
+    }
+    catch(error){
+        console.log(error)
     }
 }
-// here we are using open weather
-function foo(lat,lon){
-   var final_res = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5eb779a14d85a8b363191098dc26c5ef`)
-.then((data2)=>data2.json()).then((data3)=>console.log(data3.main.temp))
+foo() */
+// Function having more than one promise
+
+/* function getlist(){
+    return new Promise((resolve,reject)=>reject("This is rejected"))
 }
+function getdata(){
+    return new Promise((resolve,reject)=>resolve("This is resolved"))
+}
+async function foo(){
+    try{
+        var res = await getdata();
+        console.log(res);
+        var res1 = await getlist();
+        console.log(`This is statement after the error block ${res1}`);
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+foo() */
+
+
+async function foo(){
+    var promise_data = await fetch("https://data.covid19india.org/v4/min/data.min.json");
+    var res = await promise_data.json();
+    console.log(res)
+    var container = document.createElement("div");
+    container.className = "container"
+    var row = document.createElement("div");
+    row.className = "row"
+    var col = document.createElement("div");
+    col.calssName = "col-md-12"
+    col.innerHTML = `<div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Chennai</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Confirmed: ${res.TN.districts.Chennai.total.confirmed}</h5>
+      <h5 class="card-title">Deceased: ${res.TN.districts.Chennai.total.deceased}</h5>
+      <h5 class="card-title">Recovered: ${res.TN.districts.Chennai.total.recovered}</h5>
+      <h5 class="card-title">Tested: ${res.TN.districts.Chennai.total.tested}</h5>
+      <h5 class="card-title">Vaccinated 1: ${res.TN.districts.Chennai.total.vaccinated1}</h5>
+      <h5 class="card-title">Vaccinated 2: ${res.TN.districts.Chennai.total.vaccinated2}</h5>
+    </div>
+  </div>`
+  row.append(col);
+  container.append(row);
+  document.body.append(container)}
+foo()
+
+    
